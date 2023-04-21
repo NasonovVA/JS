@@ -6,9 +6,9 @@ message=2+3+2
 const daysinweek=message
 console.log(daysinweek)
 console.log('message=message+2;')
-let admin = JON
-let name = JON
-alert JON
+let admin = 'JON'
+let name = 'JON'
+console.JON
 const BIRTHDAY =
 const age =
 
