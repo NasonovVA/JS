@@ -7,7 +7,12 @@ var daysinweek = message;
 console.log(daysinweek);
 console.log('message=message+2;');
 var admin = 'JON';
-var name = 'JON';
-console.JON;
-var BIRTHDAY = ;
-var age = ;
+var name1 = 'JON';
+console.log(name1);
+var BIRTHDAY = '12';
+var age = 13;
+var s1 = 3;
+var s2 = 4;
+console.log('4>3,4>3');
+console;
+//practice_1_1
