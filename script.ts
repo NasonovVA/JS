@@ -272,6 +272,8 @@ for (let i=2; i<maxNumber;i++) {
   }
   if (isSimpl) console.log(i)
 }
+
+
 const x = 0
 switch (x) {
   case 1:
@@ -295,8 +297,9 @@ switch (x) {
   case 7:
     console.log('воск')
     break
-
+default:
 }
+
 
 
 

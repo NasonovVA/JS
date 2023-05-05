@@ -235,4 +235,5 @@ switch (x) {
     case 7:
         console.log('воск');
         break;
+    default:
 }
