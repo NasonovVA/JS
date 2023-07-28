@@ -212,28 +212,81 @@ for (var i_2 = 2; i_2 < maxNumber; i_2++) {
     if (isSimpl)
         console.log(i_2);
 }
-var x = 0;
-switch (x) {
-    case 1:
-        console.log('пн');
-        break;
-    case 2:
-        console.log('вт');
-        break;
-    case 3:
-        console.log('ср');
-        break;
-    case 4:
-        console.log('чт');
-        break;
-    case 5:
-        console.log('пт');
-        break;
-    case 6:
-        console.log('суб');
-        break;
-    case 7:
-        console.log('воск');
-        break;
-    default:
-}
+// const x = 0
+// switch (x) {
+//   case 1:
+//     console.log('пн')
+//     break
+//   case 2:
+//     console.log('вт')
+//     break
+//   case 3:
+//     console.log('ср') 
+//     break
+//   case 4:
+//     console.log('чт')
+//     break
+//   case 5:
+//     console.log('пт')
+//     break
+//   case 6:
+//     console.log('суб')
+//     break
+//   case 7:
+//     console.log('воск')
+//     break
+// default:
+// }
+var HtmlElement = /** @class */ (function () {
+    function HtmlElement(tag, single, text) {
+        this.attrs = [];
+        this.styles = [];
+        this.elements = [];
+        this.tag = tag;
+        this.single = single;
+        this.text = text;
+    }
+    HtmlElement.prototype.setAtr = function (atr) {
+        this.attrs.push(atr);
+    };
+    HtmlElement.prototype.setStyle = function (style) {
+        this.styles.unshift(style);
+    };
+    HtmlElement.prototype.appendElement = function (element) {
+        this.elements.push(element);
+    };
+    HtmlElement.prototype.setElement = function (element) {
+        this.elements.push(element);
+    };
+    HtmlElement.prototype.getHtml = function () {
+        if (this.single) {
+            return "<" + this.tag + " " + this.attrs.join(' ') + " value=\"" + this.text + "\" >";
+        }
+        else {
+            var begin = "<" + this.tag + " " + this.attrs.join(' ') + ">";
+            var end = "</" + this.tag + ">";
+            return begin + this.elements.map(function (el) { return el.getHtml(); }).join('') + end;
+        }
+    };
+    return HtmlElement;
+}());
+var imgElement = new HtmlElement('img', true, '');
+var pElement = new HtmlElement('p', false, 'текст');
+imgElement.setAtr('id="img"');
+imgElement.setStyle('color:red');
+imgElement.setStyle('padding:10px');
+imgElement.setAtr("style=\"" + imgElement.styles.join(';') + "\"");
+console.log(imgElement.getHtml());
+pElement.appendElement(imgElement);
+console.log(pElement.getHtml());
+imgElement.setAtr('style="width:100%"');
+imgElement.setAtr;
+// let num = prompt ('3 digit number' )
+// let same = false
+// for (let n of num){
+//   let temp = num
+//   temp = temp?.replaseAll(n,'')
+//   same = temp?.length < num?.length - 1
+//   if (same)
+// }
+// return`<${this.tag} ${this.attrs.join(' ')}>${this.text}</${this.tag}>`
