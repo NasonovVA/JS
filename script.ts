@@ -274,33 +274,97 @@ for (let i=2; i<maxNumber;i++) {
 }
 
 
-const x = 0
-switch (x) {
-  case 1:
-    console.log('пн')
-    break
-  case 2:
-    console.log('вт')
-    break
-  case 3:
-    console.log('ср') 
-    break
-  case 4:
-    console.log('чт')
-    break
-  case 5:
-    console.log('пт')
-    break
-  case 6:
-    console.log('суб')
-    break
-  case 7:
-    console.log('воск')
-    break
-default:
+// const x = 0
+// switch (x) {
+//   case 1:
+//     console.log('пн')
+//     break
+//   case 2:
+//     console.log('вт')
+//     break
+//   case 3:
+//     console.log('ср') 
+//     break
+//   case 4:
+//     console.log('чт')
+//     break
+//   case 5:
+//     console.log('пт')
+//     break
+//   case 6:
+//     console.log('суб')
+//     break
+//   case 7:
+//     console.log('воск')
+//     break
+// default:
+// }
+
+
+class HtmlElement{
+  tag: string
+  single: boolean
+  text:string
+  attrs:string[] = []
+  styles:string[] = []
+  elements:HtmlElement[] = []
+  constructor(tag:string,single:boolean,text:string){
+    this.tag = tag
+    this.single = single
+    this.text = text
+  }
+  setAtr(atr:string) {
+    this.attrs.push(atr)
+  }
+  setStyle(style:string) {
+    this.styles.unshift(style)
+  }
+  appendElement(element:HtmlElement) {
+    this.elements.push(element)
+  }
+  setElement(element:HtmlElement) {
+    this.elements.push(element)
+  }
+  getHtml() {
+    if (this. single) {
+      return`<${this.tag} ${this.attrs.join(' ')} value="${this.text}" >`
+    } else {
+      const begin = `<${this.tag} ${this.attrs.join(' ')}>`
+      const end = `</${this.tag}>`
+      return begin + this.elements.map(el=>el.getHtml()).join('')+ end
+
+    }
+  }
 }
 
+const imgElement = new HtmlElement('img',true,'')
+const pElement = new HtmlElement('p',false,'текст')
+imgElement.setAtr('id="img"')
+imgElement.setStyle('color:red')
+imgElement.setStyle('padding:10px')
+imgElement.setAtr(`style="${imgElement.styles.join(';')}"`)
+console.log(imgElement.getHtml())
+pElement.appendElement(imgElement)
+console.log(pElement.getHtml())
 
+imgElement.setAtr('style="width:100%"')
+imgElement.setAtr
+
+
+
+
+// let num = prompt ('3 digit number' )
+// let same = false
+// for (let n of num){
+//   let temp = num
+//   temp = temp?.replaseAll(n,'')
+//   same = temp?.length < num?.length - 1
+//   if (same)
+// }
+
+
+
+// return`<${this.tag} ${this.attrs.join(' ')}>${this.text}</${this.tag}>`
 
 
 
